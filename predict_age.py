@@ -11,7 +11,10 @@ class PredictAge:
         self.conv_dict = {0: '0-3', 1: '15-20', 2: '21-27', 3: '28-34', 4: '35-43',
                           5: '4-7', 6: '44-52', 7: '53-59', 8: '60-100', 9: '8-14'}
         if not os.path.exists('model.zip'):
-            gdown.download('https://drive.google.com/uc?id=1ePAkmx5izWlKBZgyhtOLx9nma-2bdj0s', 'model.zip', quiet=True)
+            try:
+                gdown.download('https://drive.google.com/uc?id=1ePAkmx5izWlKBZgyhtOLx9nma-2bdj0s', 'model.zip', quiet=True)
+            except:
+                print('A Working Internet Connection is required to download the model (~30MB), Try Again...')
         if not os.path.exists('model'):
             with ZipFile('model.zip') as zipf:
                 os.mkdir('model')
